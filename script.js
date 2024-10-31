@@ -10,9 +10,9 @@ main();
 // Define a function called askQuestion and call it from inside askFive() as askQuestion(1);
 
 function main(){
-    score = askFive();
-    if (score == 0) alert("Perfect score!");
-    else alert("You got " + score + " out of 5 wrong.");
+    wrong = askFive();
+    if (wrong == 0) alert("Perfect score!");
+    else alert("You got " + wrong + " out of 5 wrong.");
 }
 
 /* STAGE 1:ASK A QUESTION */
@@ -48,7 +48,6 @@ function askQuestion(question){
             alert("Incorrect, try again!");
             wrong = 1;
         }
-    }
     return wrong;
 }
 

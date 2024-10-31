@@ -10,9 +10,9 @@ main();
 // Define a function called askQuestion and call it from inside askFive() as askQuestion(1);
 
 function main(){
-    score = askFive();
-    if (score == 0) alert("Perfect score!");
-    else alert("You got " + score + " out of 5 wrong.");
+    wrong = askFive();
+    if (wrong == 0) alert("Perfect score!");
+    else alert("You got " + wrong + " out of 5 wrong.");
 }
 
 /* STAGE 1:ASK A QUESTION */
@@ -36,7 +36,11 @@ function askQuestion(question){
     let product = a * b;
     let equation = a + " * " + b + " = ?";
     let answer = prompt(equation);
-    if (answer == product){
+    if (answer == "q"){
+        alert("Quitter!")
+        return 2;
+    }
+    else if (answer == product){
         alert("Correct!")
         return 0;
     }
@@ -77,3 +81,25 @@ function askFive(){
  * @param: none
  * @return: score (0-5)
  */
+function whileQuestions(question){
+    askQuestion(question);
+    let wrong = 0;
+    let a = Math.floor(Math.random()*7)+3;
+    let b = Math.floor(Math.random()*7)+3;
+    let product = a * b;
+    let equation = a + " * " + b + " = ?";
+    let answer = 0;
+    while (answer != product || "q"){
+        answer = prompt(equation);
+        if (answer == "q"){
+            alert("Quitter!")
+            wrong = 2;
+        }
+        else if (answer == product) alert("Correct!");
+        else {
+            alert("Incorrect, try again!");
+            wrong = 1;
+        }
+    }
+    return wrong;
+}
